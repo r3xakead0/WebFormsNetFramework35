@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
+      - name: Workspace
+        run: echo $Env:GITHUB_WORKSPACE
       - name: checkout
         uses: actions/checkout@v1
       - name: Build DotNET35
