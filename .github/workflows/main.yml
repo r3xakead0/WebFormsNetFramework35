@@ -11,27 +11,9 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
-      
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
-    
+
     - name: Setup MSBuild
       uses: warrenbuckley/Setup-MSBuild@v1
-      
-    - name: Restore NuGet Packages
-      run: nuget restore WebNetFramework35.sln
 
     - name: Build Web App
       run: msbuild WebNetFramework35.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: WebForm_NetFramework35
-        path: "./_build"
-    
-    - name: Download artifact
-      uses: actions/download-artifact@v1
-      with:
-        name: WebForm_NetFramework35
-    
