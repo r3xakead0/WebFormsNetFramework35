@@ -10,10 +10,10 @@ jobs:
     runs-on: windows-2019
     steps:
       - name: Workspace
-        run: ls $Env:GITHUB_WORKSPACE
+        run: echo $Env:GITHUB_WORKSPACE
       - name: checkout
         uses: actions/checkout@v1
       - name: Build DotNET35
         run: |
            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-           .\MSBuild.exe $Env:GITHUB_WORKSPACE\WebNetFramework35.csproj
+           .\MSBuild.exe $Env:GITHUB_WORKSPACE\WebFormsNetFramework35\WebNetFramework35.csproj
